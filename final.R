@@ -67,6 +67,8 @@ sofia3 <- aggregate(sofia3, list(sofia3$geohash), mean) # reliable sensor count:
 sofia_all <- aggregate(sofia2, list(sofia2$geohash), mean) # total sensor count: 336. 
 
 # Mapping the sensors that will be used for analysis and interpolation 
+# Reading in Sofia shapefile as SP
+shapes_sp <-readOGR("Neighbourhoods/GR_UNITS_20190122.shp", layer="GR_UNITS_20190122")
 plot(shapes_sp)
 plot(sofia3, col="red", add=TRUE)
 
@@ -76,9 +78,6 @@ plot(sofia3, col="red", add=TRUE)
 
 # Converting pollution data to SP
 sofia_sp <- as(sofia3, 'Spatial')
-
-# Reading in Sofia shapefile as SP
-shapes_sp <-readOGR("Neighbourhoods/GR_UNITS_20190122.shp", layer="GR_UNITS_20190122")
 
 # Calculate range of shapefile
 box <- bbox(shapes_sp)
@@ -193,8 +192,6 @@ plot(sofia333, col="red", add=TRUE)
 
 # Converting pollution data to SP
 sofia_sp3 <- as(sofia333, 'Spatial')
-# Reading in Sofia shapefile as SP
-shapes_sp <-readOGR("Neighbourhoods/GR_UNITS_20190122.shp", layer="GR_UNITS_20190122")
 
 # Calculate range of shapefile
 box <- bbox(shapes_sp)
